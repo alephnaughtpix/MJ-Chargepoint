@@ -54,7 +54,7 @@ body {
 }
 /* line 27, ../sass/partials/pages/_main.scss */
 #map_pane #loader .text {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.75);
   font-size: 18px;
   padding: 10px;
   width: auto;
@@ -63,7 +63,7 @@ body {
 /* line 36, ../sass/partials/pages/_main.scss */
 .section_header {
   background-color: white;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 /* line 40, ../sass/partials/pages/_main.scss */
 .section_header .navigation {
@@ -263,6 +263,15 @@ body {
 /* line 22, ../sass/partials/ui/_buttons.scss */
 .edit_container .action_buttons {
   margin-bottom: 0px;
+}
+
+/* line 2, ../sass/partials/ui/_info_window.scss */
+.info_window .title, .info_window .section_content .title_lcase, .section_content .info_window .title_lcase {
+  text-transform: uppercase;
+  font-family: MontserratSemiBold, "Arial black", Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  padding-bottom: 15px;
 }
 
 /* line 1, ../sass/partials/ui/_listing_table.scss */

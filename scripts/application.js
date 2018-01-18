@@ -9,6 +9,7 @@ var data_url = (use_local) ?
 			'http://chargepoints.dft.gov.uk/api/retrieve/registry/format/json/SubscriptionRequiredFlag/false';
 
 var data = {};
+var displayData = {};
 var map, infoWindow;
 var markers = [];
 locationMarker = null;
@@ -17,14 +18,10 @@ var handleLocation = (navigator.geolocation);
 
 window.onload = loadMapScript;
 
-$(document).ready(function(){
-	loadData(startApplication);
-});
-
 function loadMapScript() {
 	var script = document.createElement('script');
 	 script.type = 'text/javascript';
-	 script.src = 'https://maps.googleapis.com/maps/api/js?' +
+	 script.src = 'http://maps.googleapis.com/maps/api/js?' +
 	 'key=' + api_key +
 	 '&callback=loadDefaultMap'; 
 	 document.body.appendChild(script);
@@ -36,6 +33,7 @@ function loadDefaultMap() {
 		    zoom:5,
 	};
 	map= new google.maps.Map(document.getElementById("map"),mapProp);
+	loadData(startApplication);
 }
 
 function loadData(callbackWhenLoaded) {
@@ -54,7 +52,8 @@ function loadData(callbackWhenLoaded) {
 
 function startApplication(result) {
 	data = processData(result)
-	populateMap(data);
+	displayData = data;
+	populateMap(displayData);
 	
 	if (handleLocation) {
 		$('#btnLocation').fadeIn('slow');
@@ -93,6 +92,9 @@ function populateMap(inputData) {
 	markers = [];
 	var noOfChargepoints = inputData.ChargeDevice.length;
 	for(var i =0; i < noOfChargepoints; i++) {
+		var iconUrl = 'images/markers/electric_charger'+ 
+		((inputData.ChargeDevice[i].Accessible24Hours) ? '_24h' : '')
+		+ '.png';
 		var pos = {
 			lat: eval(inputData.ChargeDevice[i].ChargeDeviceLocation.Latitude), 
 			lng: eval(inputData.ChargeDevice[i].ChargeDeviceLocation.Longitude)
@@ -102,11 +104,18 @@ function populateMap(inputData) {
 				lat: eval(inputData.ChargeDevice[i].ChargeDeviceLocation.Latitude), 
 				lng: eval(inputData.ChargeDevice[i].ChargeDeviceLocation.Longitude)
 			},
-			icon: 'images/markers/electric_charger.png'
+			icon: iconUrl
 		});
+		marker.set('charger_id', i);
 		var title = inputData.ChargeDevice[i].ChargeDeviceName
 		marker.addListener('click', function() {
-			infoWindowOpen(pos, infoWindow, title, 'test text', marker);
+			var chargerID = this.get('charger_id');
+			var chargerData = displayData.ChargeDevice[this.get('charger_id')];
+			var pos = {
+				lat: eval(chargerData.ChargeDeviceLocation.Latitude), 
+				lng: eval(chargerData.ChargeDeviceLocation.Longitude)
+			};
+			infoWindowOpen(pos, infoWindow, chargerData.ChargeDeviceName, chargerDetails(chargerData), marker);
 	    });
 		markers.push( 
 			marker
@@ -114,6 +123,35 @@ function populateMap(inputData) {
 	}
     var markerCluster = new MarkerClusterer(map, markers,
             {imagePath: 'images/markers/m'});	
+}
+
+function chargerDetails(chargerData) {
+	var content = '<div class="charger_info">';
+	content += '<div class="address more_container">Address:';
+	content += '<div class="more_container-data">';
+	var addressData = chargerData.ChargeDeviceLocation.Address;
+	if (addressData.SubBuildingName)
+		content += addressData.SubBuildingName + '<br/>';
+	if (addressData.BuildingName)
+		content += addressData.BuildingName + '<br/>';
+	if (addressData.BuildingNumber)
+		content += addressData.BuildingNumber;
+	if (addressData.Thoroughfare)
+		content += addressData.Thoroughfare + '<br/>';
+	if (addressData.Street)
+		content += addressData.Street + '<br/>';
+	if (addressData.PostTown)
+		content += addressData.PostTown + '<br/>';
+	if (addressData.County)
+		content += addressData.County + '<br/>';
+	if (addressData.PostCode)
+		content += addressData.PostCode + '<br/>';
+	if (chargerData.Accessible24Hours)
+		content += '<div class="access_24_hours">24 Hour access</div>';
+	content += '</div>';
+	content += '</div>';
+	content += '</div>';
+	return content;
 }
 
 function goToMyLocation() {
@@ -134,6 +172,9 @@ function goToMyLocation() {
 				icon: 'images/markers/you_are_here.png',
 				animation: google.maps.Animation.DROP
 			})
+			locationMarker.addListener('click', function() {
+				infoWindowOpen(locationMarker.postion, infoWindow, null, 'Your current location', locationMarker);
+		    });
 		}, 
 		function() {
 			handleLocationError(true, infoWindow, map.getCenter());
@@ -143,17 +184,24 @@ function goToMyLocation() {
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-                          'Error: The Geolocation service failed.' :
-                          'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
+	infoWindowOpen(pos, infoWindow, 'Error', 
+			browserHasGeolocation ?
+                    'Error: The Geolocation service failed.' :
+                    'Error: Your browser doesn\'t support geolocation.', 
+    null);
 }
 
 function infoWindowOpen(pos, infoWindow, title, text, marker) {
-	var content = '<div class="info_window"><div class="title">' + title +
-		'</div><div class="text">' + text + '</div></div>';
+	var content = '<div class="info_window">';
+	if (title != null)
+		content += '<div class="title">' + title + '</div>';
+	if (text != null)
+		content += '<div class="text">' + text + '</div>';
+	content += '</div>';
     infoWindow.setPosition(pos);
     infoWindow.setContent(content);
-    infoWindow.open(map, marker);
+    if (marker != null)
+    	infoWindow.open(map, marker);
+    else
+    	infoWindow.open(map);
 }
