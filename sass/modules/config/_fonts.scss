@@ -1,0 +1,92 @@
+// Load Web fonts
+
+@font-face {
+    font-family: 'MontserratRegular';
+    src: url('../fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MontserratSemiBold';
+    src: url('../fonts/Montserrat/Montserrat-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MontserratBlack';
+    src: url('../fonts/Montserrat/Montserrat-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DomineRegular';
+    src: url('../fonts/Domine/Domine-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DomineBold';
+    src: url('../fonts/Domine/Domine-Bold.ttf') format('truetype');
+}
+
+// Define font families here
+$Garamond: 'Garamond';
+
+$regular_font: MontserratRegular, Arial, Helvetica, sans-serif;
+$semibold_font: MontserratSemiBold, 'Arial black', Helvetica, sans-serif;
+$bold_font: MontserratBold, 'Arial black', Helvetica, sans-serif;
+
+$regular_title_font: DomineRegular, serif;
+$bold_title_font: DomineBold, serif;
+
+
+// Font mixins
+@mixin body_font {
+	color: $black;
+	font: {
+		family: $regular_font!important;
+		size: 12px;
+	}
+}
+
+
+@mixin section_header_title_font($size: 42px) {
+		font: {
+			family: $bold_title_font;
+			size: $size;
+			weight: bold;
+		}
+}
+
+@mixin section_content_title_font($size: 14px, $font: $semibold_font) {
+	text-transform: uppercase;
+	font: {
+		family: $font;
+		size: $size;
+		weight: bold;
+	}
+}
+
+@mixin section_content_large_title_font($size: 28px) {
+	@include section_header_title_font($size);
+	color: $black;
+}
+
+@mixin section_header_description_font {
+	font-size: 12px;
+	font-style: italic;
+}
+
+@mixin section_header_navigation_font {
+	@include section_content_title_font( 10px, $bold_font );
+	font-weight: bold;
+	color: $black;
+}
+
+@mixin listing_table_header_font {
+	color: $blue;
+	@include section_content_title_font;
+}
+
+@mixin button_font {
+	@include body_font;
+	font-weight: bold;
+	color: $white;
+}
+	

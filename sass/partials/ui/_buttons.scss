@@ -1,0 +1,27 @@
+.action_buttons {
+	margin-bottom: 20px;
+	.btn {
+		@include button_font;
+		color: $button_colour_text!important;
+		&:hover {
+			color: $button_colour_text;
+		}
+		&.add {
+			@include button_colors($colour_add);
+		}
+		&.warning {
+			@include button_colors($colour_warning);
+		}
+		&.cancel {
+			@include button_colors($colour_cancel);
+		}
+		&.okay {
+			@include button_colors($colour_okay);
+		}
+	}
+	.edit_container & {
+		margin-bottom: 0px;
+	}
+}
+
+

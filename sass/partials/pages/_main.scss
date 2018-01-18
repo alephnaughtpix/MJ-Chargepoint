@@ -1,0 +1,134 @@
+body {
+	@include body_font;
+	background-color: $default_background_color!important;
+}
+
+.title {
+	color: $dark_red;
+	@include section_header_title_font;
+}
+
+#map_pane {
+	position: relative;
+	
+	#map {
+		height: 500px;
+		height: 75vh;
+	}
+
+	#loader {
+		position: absolute;
+		left: 0px;
+		width: 100%;
+		text-align: center;
+		top: 250px;
+		top: 37vh;
+		
+		.text {
+			background-color: rgba(255,255,255,0.5);
+			font-size: 18px;
+			padding: 10px;
+			width: auto;
+		}
+	}
+}
+
+.section_header {
+	background-color: $heading_background_colour;
+	margin-bottom: 30px;		
+	
+	.navigation {
+		margin-bottom: 20px;		
+		@include section_header_navigation_font;
+		
+		.nav-tabs {
+			border: 0;
+		    text-align:center;
+		}
+		
+		.nav-tabs > li {
+		    float:none;
+		    display:inline-block;
+		    border: none;
+		    
+		   	a, a:hover {
+		   		color: black;
+		   		background: transparent;
+		   		border: none;
+		   		padding-bottom: 5px;
+		   	}
+		   	a {
+		   		@include top_nav_selection(transparent);
+		   		&:hover {
+		   			color: $blue;
+					@include top_nav_selection;
+		   		}
+		   	}
+
+		    &.active a {
+		    	color: $blue;
+		    	@include top_nav_selection($red);
+		    	
+		    	&:hover {
+		    		color: $blue;
+					@include top_nav_selection($red);
+		   		}
+		    }
+		   
+		}
+	}
+	
+	.title {
+		color: $dark_red;
+		@include section_header_title_font;
+	}
+	.description {
+		@include section_header_description_font;		
+	}
+
+	.nav.nav-tabs {
+		ul {
+			display:inline-block;
+		}
+	}
+}
+
+.section_content {
+		padding: 20px;
+		background-color: $content_background_colour;
+		//height: 100%;
+		
+		.title {
+			@include section_content_title_font;
+			padding-bottom: 15px;
+		}
+		.title_lcase {
+			@extend .title;
+			text-transform: none;
+		}
+		.title_large {
+			@include section_content_large_title_font
+		}
+		.description {
+			@include section_header_description_font;		
+		}	
+		.detail_panel {
+			.dropzone {
+				background-color: $dropzone_bg_col;
+			}
+		}
+		.infobox {
+			@include box_shadow;
+			background-color: $white;
+			padding: 15px;
+			margin-bottom: 20px;
+		}
+}
+
+.section_header, .section_content {
+	padding: {
+		left: 15px; 
+		right: 15px;
+	}
+}
+

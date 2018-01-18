@@ -1,0 +1,358 @@
+@font-face {
+  font-family: 'MontserratRegular';
+  src: url("../fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'MontserratSemiBold';
+  src: url("../fonts/Montserrat/Montserrat-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'MontserratBlack';
+  src: url("../fonts/Montserrat/Montserrat-Black.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'DomineRegular';
+  src: url("../fonts/Domine/Domine-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'DomineBold';
+  src: url("../fonts/Domine/Domine-Bold.ttf") format("truetype");
+}
+/* line 1, ../sass/partials/pages/_main.scss */
+body {
+  color: #191919;
+  font-family: MontserratRegular, Arial, Helvetica, sans-serif !important;
+  font-size: 12px;
+  background-color: white !important;
+}
+
+/* line 6, ../sass/partials/pages/_main.scss */
+.title, .section_content .title_lcase {
+  color: #ae1010;
+  font-family: DomineBold, serif;
+  font-size: 42px;
+  font-weight: bold;
+}
+
+/* line 11, ../sass/partials/pages/_main.scss */
+#map_pane {
+  position: relative;
+}
+/* line 14, ../sass/partials/pages/_main.scss */
+#map_pane #map {
+  height: 500px;
+  height: 75vh;
+}
+/* line 19, ../sass/partials/pages/_main.scss */
+#map_pane #loader {
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  top: 250px;
+  top: 37vh;
+}
+/* line 27, ../sass/partials/pages/_main.scss */
+#map_pane #loader .text {
+  background-color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  padding: 10px;
+  width: auto;
+}
+
+/* line 36, ../sass/partials/pages/_main.scss */
+.section_header {
+  background-color: white;
+  margin-bottom: 30px;
+}
+/* line 40, ../sass/partials/pages/_main.scss */
+.section_header .navigation {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-family: MontserratBold, "Arial black", Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  font-weight: bold;
+  color: #191919;
+}
+/* line 44, ../sass/partials/pages/_main.scss */
+.section_header .navigation .nav-tabs {
+  border: 0;
+  text-align: center;
+}
+/* line 49, ../sass/partials/pages/_main.scss */
+.section_header .navigation .nav-tabs > li {
+  float: none;
+  display: inline-block;
+  border: none;
+}
+/* line 54, ../sass/partials/pages/_main.scss */
+.section_header .navigation .nav-tabs > li a, .section_header .navigation .nav-tabs > li a:hover {
+  color: black;
+  background: transparent;
+  border: none;
+  padding-bottom: 5px;
+}
+/* line 60, ../sass/partials/pages/_main.scss */
+.section_header .navigation .nav-tabs > li a {
+  border-bottom: 3px solid transparent;
+}
+/* line 62, ../sass/partials/pages/_main.scss */
+.section_header .navigation .nav-tabs > li a:hover {
+  color: #14144b;
+  border-bottom: 3px solid #191919;
+}
+/* line 68, ../sass/partials/pages/_main.scss */
+.section_header .navigation .nav-tabs > li.active a {
+  color: #14144b;
+  border-bottom: 3px solid #ef4e4e;
+}
+/* line 72, ../sass/partials/pages/_main.scss */
+.section_header .navigation .nav-tabs > li.active a:hover {
+  color: #14144b;
+  border-bottom: 3px solid #ef4e4e;
+}
+/* line 81, ../sass/partials/pages/_main.scss */
+.section_header .title, .section_header .section_content .title_lcase, .section_content .section_header .title_lcase {
+  color: #ae1010;
+  font-family: DomineBold, serif;
+  font-size: 42px;
+  font-weight: bold;
+}
+/* line 85, ../sass/partials/pages/_main.scss */
+.section_header .description {
+  font-size: 12px;
+  font-style: italic;
+}
+/* line 90, ../sass/partials/pages/_main.scss */
+.section_header .nav.nav-tabs ul {
+  display: inline-block;
+}
+
+/* line 96, ../sass/partials/pages/_main.scss */
+.section_content {
+  padding: 20px;
+  background-color: #e0e0e1;
+}
+/* line 101, ../sass/partials/pages/_main.scss */
+.section_content .title, .section_content .title_lcase {
+  text-transform: uppercase;
+  font-family: MontserratSemiBold, "Arial black", Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+/* line 105, ../sass/partials/pages/_main.scss */
+.section_content .title_lcase {
+  text-transform: none;
+}
+/* line 109, ../sass/partials/pages/_main.scss */
+.section_content .title_large {
+  font-family: DomineBold, serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: #191919;
+}
+/* line 112, ../sass/partials/pages/_main.scss */
+.section_content .description {
+  font-size: 12px;
+  font-style: italic;
+}
+/* line 116, ../sass/partials/pages/_main.scss */
+.section_content .detail_panel .dropzone {
+  background-color: #616161;
+}
+/* line 120, ../sass/partials/pages/_main.scss */
+.section_content .infobox {
+  -webkit-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+/* line 128, ../sass/partials/pages/_main.scss */
+.section_header, .section_content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* line 3, ../sass/partials/pages/_nav_menu.scss */
+#nav_menu .navbar-nav span.glyphicon {
+  font-size: 16px;
+}
+
+/* line 1, ../sass/partials/pages/_colours.scss */
+.text_colour_add {
+  color: #e7b120 !important;
+}
+
+/* line 4, ../sass/partials/pages/_colours.scss */
+.text_colour_warning {
+  color: #ef4e4e !important;
+}
+
+/* line 7, ../sass/partials/pages/_colours.scss */
+.text_colour_cancel {
+  color: #14144b !important;
+}
+
+/* line 10, ../sass/partials/pages/_colours.scss */
+.text_colour_okay {
+  color: #017e3c !important;
+}
+
+/* line 1, ../sass/partials/ui/_buttons.scss */
+.action_buttons {
+  margin-bottom: 20px;
+}
+/* line 3, ../sass/partials/ui/_buttons.scss */
+.action_buttons .btn {
+  color: #191919;
+  font-family: MontserratRegular, Arial, Helvetica, sans-serif !important;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  color: white !important;
+}
+/* line 6, ../sass/partials/ui/_buttons.scss */
+.action_buttons .btn:hover {
+  color: white;
+}
+/* line 9, ../sass/partials/ui/_buttons.scss */
+.action_buttons .btn.add {
+  background-color: #e7b120;
+  border-color: #e7b120;
+}
+/* line 14, ../sass/modules/config/_mixins.scss */
+.action_buttons .btn.add:hover {
+  background-color: #d6a317;
+  border-color: #d6a317;
+}
+/* line 12, ../sass/partials/ui/_buttons.scss */
+.action_buttons .btn.warning {
+  background-color: #ef4e4e;
+  border-color: #ef4e4e;
+}
+/* line 14, ../sass/modules/config/_mixins.scss */
+.action_buttons .btn.warning:hover {
+  background-color: #ed3737;
+  border-color: #ed3737;
+}
+/* line 15, ../sass/partials/ui/_buttons.scss */
+.action_buttons .btn.cancel {
+  background-color: #14144b;
+  border-color: #14144b;
+}
+/* line 14, ../sass/modules/config/_mixins.scss */
+.action_buttons .btn.cancel:hover {
+  background-color: #0f0f37;
+  border-color: #0f0f37;
+}
+/* line 18, ../sass/partials/ui/_buttons.scss */
+.action_buttons .btn.okay {
+  background-color: #017e3c;
+  border-color: #017e3c;
+}
+/* line 14, ../sass/modules/config/_mixins.scss */
+.action_buttons .btn.okay:hover {
+  background-color: #016530;
+  border-color: #016530;
+}
+/* line 22, ../sass/partials/ui/_buttons.scss */
+.edit_container .action_buttons {
+  margin-bottom: 0px;
+}
+
+/* line 1, ../sass/partials/ui/_listing_table.scss */
+.listing_table {
+  margin-bottom: 20px;
+  -webkit-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.5);
+}
+/* line 4, ../sass/partials/ui/_listing_table.scss */
+.listing_table .listing_table_heading, .listing_table thead {
+  background-color: white;
+  color: #14144b;
+  text-transform: uppercase;
+  font-family: MontserratSemiBold, "Arial black", Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  table-display: fixed;
+}
+/* line 9, ../sass/partials/ui/_listing_table.scss */
+.listing_table .listing_table_row {
+  background-color: white;
+}
+/* line 11, ../sass/partials/ui/_listing_table.scss */
+.listing_table .listing_table_row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+/* line 14, ../sass/partials/ui/_listing_table.scss */
+.listing_table .listing_table_row:hover {
+  background-color: #f7a7a7;
+  cursor: pointer;
+}
+/* line 18, ../sass/partials/ui/_listing_table.scss */
+.listing_table .listing_table_row.active {
+  background-color: #f37878;
+}
+/* line 21, ../sass/partials/ui/_listing_table.scss */
+.listing_table .listing_table_row a {
+  color: #14144b;
+  text-decoration: none;
+  border-bottom: 1px #14144b dotted;
+}
+/* line 27, ../sass/partials/ui/_listing_table.scss */
+.listing_table.scroll-area {
+  width: 100%;
+  max-height: 500px;
+  max-height: 55vh;
+  float: left;
+  overflow-y: scroll;
+  overflow-x: none;
+}
+/* line 35, ../sass/partials/ui/_listing_table.scss */
+.listing_table thead {
+  position: relative;
+  display: block;
+}
+/* line 38, ../sass/partials/ui/_listing_table.scss */
+.listing_table thead tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+/* line 44, ../sass/partials/ui/_listing_table.scss */
+.listing_table tbody {
+  display: block;
+  max-height: 500px;
+  max-height: 55vh;
+  overflow-y: auto;
+  overflow-x: none;
+  width: 100%;
+}
+/* line 51, ../sass/partials/ui/_listing_table.scss */
+.listing_table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* line 2, ../sass/partials/ui/_details_table.scss */
+.details_table .row {
+  font-size: 12px;
+}
+/* line 4, ../sass/partials/ui/_details_table.scss */
+.details_table .row .title, .details_table .row .section_content .title_lcase, .section_content .details_table .row .title_lcase {
+  font-weight: bold;
+  text-transform: none;
+}
+
+/* line 1, ../sass/vendors/bootstrap/_base.scss */
+.row.text-center > div {
+  display: inline-block;
+  float: none;
+}

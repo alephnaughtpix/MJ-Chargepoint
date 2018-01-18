@@ -1,0 +1,19 @@
+@mixin box_shadow($horiz: 2px, $vert: 2px, $blur: 3px, $spread: 0px, $colour: rgba(0,0,0,0.5)) {
+	-webkit-box-shadow: $horiz $vert $blur $spread $colour;
+	-moz-box-shadow: $horiz $vert $blur $spread $colour;
+	box-shadow: $horiz $vert $blur $spread $colour;
+}
+
+@mixin top_nav_selection($colour: $black) {
+	border-bottom: 3px solid $colour;
+}
+
+@mixin button_colors($colour) {
+	background-color: $colour;
+	border-color: $colour;
+	&:hover {
+		background-color: darken($colour, 5%);
+		border-color: darken($colour, 5%);
+	}
+}
+	

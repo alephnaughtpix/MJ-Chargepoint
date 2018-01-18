@@ -1,0 +1,35 @@
+// Common colour values
+$red: #ef4e4e;
+$blue: #14144b;
+$black: #191919;
+//$white: #f9f9f9;
+$white: white;
+$grey: #7a7a7b;
+$orange: #e7b120;
+$green: #017e3c;
+
+$navy: darken($blue, 5%);
+$dark_red: darken($red, 25%);
+
+// Colour concepts
+$colour_add: $orange;
+$colour_warning: $red;
+$colour_cancel: $blue;
+$colour_okay: $green;
+
+// UI colour settings
+$default_background_color: $white;
+
+$heading_background_colour: $default_background_color;
+$content_background_colour: lighten($grey,40%);
+
+$table_row_bg_colour: $white;
+$table_row_alt_bg_colour: darken($table_row_bg_colour, 5%);
+$table_row_hover_bg_colour: mix($table_row_bg_colour, $red, 50%);
+$table_row_click_bg_colour: darken($table_row_hover_bg_colour, 10%);
+
+$button_colour_text: $white;
+
+$dropzone_bg_col: darken($grey,10%);
+
+
