@@ -1,0 +1,6 @@
+.info_window {
+	.title {
+		@include section_content_title_font;
+		padding-bottom: 15px;
+	}
+}
